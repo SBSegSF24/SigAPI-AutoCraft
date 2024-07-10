@@ -1,0 +1,152 @@
+features,score
+Network communication : view network state (S),0.016788200484836535
+Network communication : full Internet access (D),0.010600265663990971
+System tools : automatically start at boot (S),0.008473347621235305
+Your location : fine (GPS) location (D),0.007793398792321549
+Default : bind to a wallpaper (S),0.007314875748457794
+System tools : send sticky broadcast (S),0.00722497351119733
+Phone calls : intercept outgoing calls (D),0.007014651278261175
+Development tools : send Linux signals to applications (D),0.006412898354957619
+Network communication : receive data from Internet (S),0.006154409934786331
+System tools : set preferred applications (S),0.005916548430978663
+Your accounts : Google mail (D),0.005857214006478317
+Hardware controls : test hardware (S),0.005529079761867228
+Your location : access extra location provider commands (S),0.005394133486080754
+Default : Access Email provider data (S),0.005317075793689785
+Default : force application to close (S),0.005261002827629424
+Your accounts : Google Docs (D),0.005024999352022386
+System tools : retrieve running applications (D),0.004996729161022229
+Phone calls : read phone state and identity (D),0.004937619355123601
+Your accounts : contacts data in Google accounts (D),0.004839657494682736
+System tools : format external storage (D),0.004738122059849248
+Default : access SurfaceFlinger (S),0.00462702826162209
+Your messages : edit SMS or MMS (D),0.004610622632033268
+Your personal information : write Browser's history and bookmarks (D),0.004500752173133504
+Default : delete applications (S),0.004366515361378109
+System tools : modify global system settings (D),0.004358506925991046
+Development tools : make all background applications close (D),0.004354684708902878
+System tools : prevent device from sleeping (D),0.004320477045470339
+System tools : set wallpaper size hints (S),0.004283138776727702
+Default : bind to an input method (S),0.004156436211918191
+Storage : modify/delete USB storage contents modify/delete SD card contents (D),0.0038056960507588666
+System tools : measure application storage space (S),0.0037814698882969733
+System tools : read sync settings (S),0.003758428446106077
+Your accounts : manage the accounts list (D),0.0037562582664287802
+Your personal information : add or modify calendar events and send email to guests (D),0.0037497386827662904
+Network communication : view Wi-Fi state (S),0.0036218141993562547
+System tools : kill background processes (S),0.003511001832463112
+Default : prevent app switches (S),0.0033564728213413275
+System tools : change network connectivity (D),0.0033167607500328433
+Default : monitor and control all application launching (S),0.003174176679728191
+Default : read phone state and identity (S),0.0031613615869487965
+Your personal information : write to user defined dictionary (S),0.0027861673252964625
+Network communication : Broadcast data messages to applications. (S),0.0026469958498049895
+Default : Access DRM content. (S),0.002480422758273315
+Default : read frame buffer (S),0.0024513572282580665
+Default : Read Google settings (S),0.0021999386777729057
+Default : modify secure system settings (S),0.002188311715712432
+System tools : read/write to resources owned by diag (S),0.002133904376808493
+Network communication : make/receive Internet calls (D),0.002062254232169325
+Your messages : read Gmail (D),0.0020410672991781897
+Your messages : read instant messages (D),0.001991982315374896
+Your accounts : use the authentication credentials of an account (D),0.0019895582674607226
+Default : Advanced download manager functions. (S),0.0019632289512601098
+Default : Access download manager. (S),0.001906055233837911
+System tools : write sync settings (D),0.0018486759916804818
+Your personal information : choose widgets (S),0.0018171734541925222
+Services that cost you money : send SMS messages (D),0.0018017719507950058
+Your accounts : Google Spreadsheets (D),0.0017694138295307749
+Default : Audio File Access (S),0.0015438551092492592
+Default : power device on or off (S),0.00146721523595561
+Hardware controls : take pictures and videos (D),0.0013607860756315038
+Your accounts : Google Finance (D),0.0012828309918295755
+System tools : make application always run (D),0.0012819521856564098
+Your personal information : read sensitive log data (D),0.0012642444376240736
+Your messages : receive WAP (D),0.0011041410850785027
+Your messages : Read Email attachments (D),0.0010957452433950632
+Default : enable or disable application components (S),0.0010754687282725772
+System tools : read sync statistics (S),0.0010485086677740618
+System tools : send package removed broadcast (S),0.0009164684500144737
+Your accounts : view configured accounts (S),0.0008729943021394959
+Default : display unauthorized windows (S),0.0007688325367591897
+Your location : mock location sources for testing (D),0.000676456393279512
+System tools : reorder running applications (D),0.0005534046800610426
+System tools : display system-level alerts (D),0.0004917642434474345
+Your accounts : read Google service configuration (S),0.00042228707220526296
+Default : Install DRM content. (S),0.00040775179826724184
+System tools : allow Wi-Fi Multicast reception (D),0.00033002615943922287
+Default : permission to install a location provider (S),0.00025808500298651893
+Your personal information : write contact data (D),0.00023398779755789967
+Your personal information : read Browser's history and bookmarks (D),0.00016530425409899685
+System tools : bluetooth administration (D),0.0001032438509183109
+Default : delete other applications' caches (S),9.044659714341208e-05
+Hardware controls : record audio (D),7.541228920460163e-05
+Default : manage application tokens (S),1.499800150162045e-05
+Your accounts : act as the AccountManagerService (S),0.0
+Your personal information : retrieve system internal state (S),0.0
+Your messages : receive MMS (D),0.0
+Your accounts : act as an account authenticator (D),0.0
+Default : Move application resources (S),0.0
+Your accounts : access other Google services (D),0.0
+Your accounts : access all Google services (S),0.0
+Your personal information : set alarm in alarm clock (S),0.0
+Your accounts : YouTube usernames (D),0.0
+Your accounts : YouTube (D),0.0
+Your accounts : Picasa Web Albums (D),0.0
+Your accounts : discover known accounts (S),0.0
+Your personal information : read calendar events (D),0.0
+Your personal information : read user defined dictionary (D),0.0
+Your personal information : read contact data (D),0.0
+Default : Modify Google settings (S),0.0
+Your location : coarse (network-based) location (D),0.0
+Your messages : send WAP-PUSH-received broadcast (S),0.0
+Your messages : Send Gmail (S),0.0
+Your messages : send SMS-received broadcast (S),0.0
+Your messages : modify Gmail (D),0.0
+Default : Send download notifications. (S),0.0
+Your messages : read SMS or MMS (D),0.0
+Your messages : receive SMS (D),0.0
+Default : set time (S),0.0
+System tools : set time zone (D),0.0
+Your accounts : Google Voice (D),0.0
+Default : partial shutdown (S),0.0
+System tools : change your UI settings (D),0.0
+System tools : change Wi-Fi state (D),0.0
+Default : force device reboot (S),0.0
+Default : interact with a device admin (S),0.0
+Services that cost you money : directly call phone numbers (D),0.0
+Phone calls : modify phone state (S),0.0
+Default : modify battery statistics (S),0.0
+Default : modify the Google services map (S),0.0
+Network communication : create Bluetooth connections (D),0.0
+Your accounts : Google Maps (D),0.0
+Network communication : control Near Field Communication (D),0.0
+Default : press keys and control buttons (S),0.0
+Hardware controls : control vibrator (S),0.0
+Hardware controls : control flashlight (S),0.0
+Hardware controls : change your audio settings (D),0.0
+Default : record what you type and actions you take (S),0.0
+Development tools : limit number of running processes (D),0.0
+Development tools : enable application debugging (D),0.0
+System tools : disable keylock (D),0.0
+System tools : expand/collapse status bar (S),0.0
+System tools : force stop other applications (S),0.0
+Default : disable or modify status bar (S),0.0
+Default : Voice Search Shortcuts (S),0.0
+Your accounts : Google App Engine (D),0.0
+System tools : write subscribed feeds (D),0.0
+System tools : write Access Point Name settings (D),0.0
+Default : access checkin properties (S),0.0
+System tools : set wallpaper (S),0.0
+Default : update component usage statistics (S),0.0
+Default : access the cache filesystem (S),0.0
+Default : change screen orientation (S),0.0
+Default : control location update notifications (S),0.0
+Default : control system backup and restore (S),0.0
+System tools : read subscribed feeds (S),0.0
+System tools : mount and unmount filesystems (D),0.0
+Default : delete other applications' data (S),0.0
+System tools : modify global animation speed (D),0.0
+Default : directly call any phone numbers (S),0.0
+Default : directly install applications (S),0.0
+System tools : delete all application cache data (D),0.0
