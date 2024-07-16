@@ -214,12 +214,18 @@ O repositório está organizado da seguinte maneira:
 - **SigAPI_Otimizado**: Contém arquivos e scripts relacionados à versão otimizada do SigAPI.
 
 ### Adicionar uma tabela do balanceamento ex:
-| Dataset                | Benignos | Malwares | Nº Features |
-|------------------------|----------|----------|-------------|
-| Androcrawl             | 1500     | 1500     | 300         |
-| Adroit                 | 2000     | 2000     | 250         |
-| Drebin-215             | 1000     | 1000     | 400         |
-| Android Permissions    | 1200     | 1200     | 350         |
+|             Dataset             | Benignos | Malwares | Nº Features |
+|:-------------------------------:|:--------:|:--------:|:-----------:|
+|            Androcrawl           |   1500   |   1500   |     300     |
+|              Adroit             |   2000   |   2000   |     250     |
+|            Drebin-215           |   1000   |   1000   |     400     |
+|       Android Permissions       |   1200   |   1200   |     350     |
+|      Kronodroid Real Device     |   36755  |   36755  |     287     |
+|              MH100K             |   10000  |   10000  |     201     |
+| Defensedroid Apicalls Closeness |   5222   |   5222   |     201     |
+|   Defensedroid Apicalls Degree  |   5222   |   5222   |     201     |
+|    Defensedroid Apicalls Katz   |   5222   |   5222   |     201     |
+|         Defensedroid prs        |   5975   |   5975   |     201     |
 
 ### Seria interessante colocar uma tabela comparativa simples como no exemplo abaixo:
 
