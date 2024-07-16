@@ -51,7 +51,7 @@ docker run -v $(readlink -f .):/sigapi -it sigapi
 
 ```
 
-## :penguin: Executando no seu Linux
+## :penguin: Executando diretamente no shell Linux host
 
 **Instalando Python, se necessário**
 
