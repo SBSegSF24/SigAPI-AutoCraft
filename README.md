@@ -11,7 +11,7 @@ Os resultados indicam uma boa capacidade de generalização e um aumento no dese
 ## Clonando o repositório Github
 ```bash
 
-git clone https://github.com/CyberLabX/SF24_SigAPI.git
+git clone https://github.com/SBSegSF24/SigAPI-AutoCraft.git
 
 cd SF24_SigAPI
 
@@ -19,18 +19,22 @@ cd SF24_SigAPI
 
 ## Executando em Docker :whale:
 
-1. Instalando o Docker e construindo a imagem:
+1. Instalando o Docker:
 ```bash
 
 sudo apt install docker docker.io
 
-sudo usermod -aG docker $USER
+sudo usermod -aG docker $USER # necessário apenas se o usuário ainda não utilizar dock    er em modo usuário
 
+```
+
+2. Construíndo a imagem com o Docker:
+```bash
 docker build -t sigapi:latest .
 
 ```
 
-2. Iniciando um container em modo **persistente** ou **não persistente**
+3. Iniciando um container em modo **persistente** ou **não persistente**
 
 **Não persistente**: Os arquivos de saida serão apagados quando o conteiner finalizar a execução.
 
@@ -39,7 +43,7 @@ docker build -t sigapi:latest .
 docker run -it sigapi
 
 ```
-**Persistente**: Os arquivos de saída serão salvos no diretório atual
+**Persistente**: Os arquivos de saída da execução serão salvos no diretório atual
 
 ```bash
 
