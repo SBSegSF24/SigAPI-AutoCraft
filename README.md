@@ -152,7 +152,7 @@ Para os demais datasets selecionados pelo método **otimizado**, substitua o val
 ***OBS: Recomenda-se armazenar os resultados gerados pelo método em uma pasta separada após cada execução.***
 
 
-# Ambiente de testes
+# :dash: Ambiente de testes
 
 O método foi testado no seguinte ambiente:
 - Notebook Intel Core i5-8265U da 8ª geração, CPU @1.60GHz (8 núcleos) e 8GB de memória RAM
@@ -179,7 +179,7 @@ O repositório está organizado da seguinte maneira:
 - README.md
 ```
 
-## Descrição dos Diretórios:
+### Descrição dos Diretórios:
 
 - **Algoritmos_de_Teste**: Scripts relacionados aos algoritmos e testes.
 
