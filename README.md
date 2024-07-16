@@ -7,7 +7,10 @@ Para resolver esses problemas, desenvolvemos uma versão aprimorada do método, 
 Os resultados indicam uma boa capacidade de generalização e um aumento no desempenho de predição em até 20%
 
 
-## :octocat: Clonando o repositório Github
+
+## Preparação e instalação
+
+### :octocat: Clonando o repositório Github
 ```bash
 
 git clone https://github.com/SBSegSF24/SigAPI-AutoCraft.git
@@ -16,7 +19,8 @@ cd SF24_SigAPI
 
 ```
 
-## Preparação e instalação
+
+
 ### :whale: Instalação no ambiente Docker
 
 1. Instalando o Docker:
