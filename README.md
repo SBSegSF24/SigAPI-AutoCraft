@@ -17,7 +17,7 @@ cd SF24_SigAPI
 
 ```
 
-## :docker: Executando em Docker :whale:
+## :whale: Executando em Docker
 
 1. Instalando o Docker:
 ```bash
@@ -97,9 +97,9 @@ pip install -r requirements.txt
 ./reproduzir_sigapi_autocraft.sh
 ```
 
-## Execução da SigAPI AutoCraft para um dataset
+## :shell: Execução manual do SigAPI AutoCraft para um dataset
 
-#### Exemplo:
+### Exemplo:
 Parâmetros:
 `-d` indica dataset
 `-o` indica output
@@ -119,9 +119,9 @@ Para os demais datasets, substitua o valor do parâmetro `-d` conforme a lista a
 - `Datasets/Balanceados/reduced_20k_mh_100k_filtered.csv`
 - `Datasets/Balanceados/reduced_balanced_defensedroid_prs.csv`
 
-### Execução do Random Forest para um dataset reduzido
+## :shell: Execução manual do Random Forest para um dataset reduzido
 
-#### Exemplo:
+### Exemplo:
 ```
 python3 run_ml_RandomForest.py -d Resultados/Original/Datasets/ORIGINAL-resultado-selecao-balanceados-adroit.csv -c rf
 ```
