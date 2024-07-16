@@ -17,7 +17,7 @@ cd SF24_SigAPI
 ```
 
 ## Preparação e instalação
-### :whale: Instalação em Docker
+### :whale: Instalação no ambiente Docker
 
 1. Instalando o Docker:
 ```bash
