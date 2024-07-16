@@ -213,7 +213,7 @@ O repositório está organizado da seguinte maneira:
 
 - **SigAPI_Otimizado**: Contém arquivos e scripts relacionados à versão otimizada do SigAPI.
 
-### Adicionar uma tabela do balanceamento ex:
+## Datasets:
 |             Dataset             | Nº Amostras  | Nº Amostras balanceado | Nº Features  | Nº Features balanceado |
 |:-------------------------------:|:------------:|:----------------------:|:------------:|:----------------------:|
 |            Androcrawl           |    162983    |          20340         |      221     |           82           |
