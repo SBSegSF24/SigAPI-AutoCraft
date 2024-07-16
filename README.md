@@ -24,7 +24,7 @@ cd SF24_SigAPI
 
 sudo apt install docker docker.io
 
-sudo usermod -aG docker $USER # necessário apenas se o usuário ainda não utilizar dock    er em modo usuário
+sudo usermod -aG docker $USER # necessário apenas se o usuário ainda não utilizar docker em modo usuário
 
 ```
 
@@ -83,7 +83,7 @@ pip install -r requirements.txt
 
 **Executando a ferramenta** (use **python 3.10.12** ou posterior)
 
-### Como executar SigAPI AutoCraft para cada Dataset manualmente
+### Execução da SigAPI AutoCraft para um Dataset
 
 #### Exemplo:
 Parâmetros:
@@ -105,7 +105,7 @@ Para os demais datasets, substitua o valor do parâmetro `-d` conforme a lista a
 - `Datasets/Balanceados/reduced_20k_mh_100k_filtered.csv`
 - `Datasets/Balanceados/reduced_balanced_defensedroid_prs.csv`
 
-### Como executar o método ML Random Forest para cada Dataset reduzido
+### Execução do método ML Random Forest para um Dataset reduzido
 
 #### Exemplo:
 ```
@@ -138,18 +138,17 @@ Para os demais datasets selecionados pelo método **otimizado**, substitua o val
 ***OBS: Recomenda-se armazenar os resultados gerados pelo método em uma pasta separada após cada execução.***
 
 
+## :dart: Reprodução dos experimentos
 
-## :dart: Executando por scripts
-
-### Execução do SigAPI Original para cada Dataset
+### Execução do SigAPI Original para todos os datasets
 
 ```
-bash sigapi.sh
+bash reproduzir_sigapi.sh
 ```
 
-### Execução do SigAPI AutoCraft para cada Dataset
+### Execução do SigAPI AutoCraft para todos os datasets
 ```
-bash sigapi-autocraft.sh
+bash reproduzir_sigapi_autocraft.sh
 ```
 
 # Ambiente de testes
