@@ -83,7 +83,7 @@ pip install -r requirements.txt
 **Executando a ferramenta** (use **python 3.10.12** ou posterior)
 
 
-## :dart: Reprodução dos experimentos
+## :dart: Reproduzindo os experimentos do trabalho
 
 ### Execução do SigAPI Original para todos os datasets
 
