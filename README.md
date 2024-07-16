@@ -194,7 +194,7 @@ O repositório está organizado da seguinte maneira:
 - README.md
 ```
 
-### Descrição dos Diretórios:
+## Descrição dos Diretórios:
 
 - **Algoritmos_de_Teste**: Scripts relacionados aos algoritmos e testes.
 
