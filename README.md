@@ -67,8 +67,9 @@ source venv/bin/activate
 pip install -r requirements.txt
 ~~~
 
-## Execução de scripts demos
-As execuções demo realizam a execução de um dos [datasets ](https://github.com/SBSegSF24/SigAPI-AutoCraft/blob/cbeaf5872abe324db5510c361975999da86d044c/Datasets/Balanceados/adroit_bl.csv) reduzidos. A sua execução leva menos de um minuto em ambos os ambientes em uma máquina Intel Core i7-10700, 8 cores com 16 GB de RAM.
+## :mouse: Execução da demo
+
+As demos executam o SigAPI AutoCraft em um único dataset reduzido ([dataset Adroit BL](https://github.com/SBSegSF24/SigAPI-AutoCraft/blob/cbeaf5872abe324db5510c361975999da86d044c/Datasets/Balanceados/adroit_bl.csv)). A demo leva **menos de 1 minuto** em uma máquina máquina _Intel Core i7-10700, 8 cores com 16 GB de RAM_.
 
 **No ambiente docker**
 ~~~sh
