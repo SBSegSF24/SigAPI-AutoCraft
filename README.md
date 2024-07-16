@@ -214,19 +214,18 @@ O repositório está organizado da seguinte maneira:
 - **SigAPI_Otimizado**: Contém arquivos e scripts relacionados à versão otimizada do SigAPI.
 
 ### Adicionar uma tabela do balanceamento ex:
-|             Dataset             | Benignos | Malwares | Nº Features |
-|:-------------------------------:|:--------:|:--------:|:-----------:|
-|            Androcrawl           |   1500   |   1500   |     300     |
-|              Adroit             |   2000   |   2000   |     250     |
-|            Drebin-215           |   1000   |   1000   |     400     |
-|       Android Permissions       |   1200   |   1200   |     350     |
-|      Kronodroid Real Device     |   36755  |   36755  |     287     |
-|              MH100K             |   10000  |   10000  |     201     |
-| Defensedroid Apicalls Closeness |   5222   |   5222   |     201     |
-|   Defensedroid Apicalls Degree  |   5222   |   5222   |     201     |
-|    Defensedroid Apicalls Katz   |   5222   |   5222   |     201     |
-|         Defensedroid prs        |   5975   |   5975   |     201     |
-
+|             Dataset             | Nº Amostras  | Nº Amostras balanceado | Nº Features  | Nº Features balanceado |
+|:-------------------------------:|:------------:|:----------------------:|:------------:|:----------------------:|
+|            Androcrawl           |    162983    |          20340         |      221     |           82           |
+|              Adroit             |     11476    |          6836          |      182     |           167          |
+|            Drebin-215           |     15031    |          11110         |      215     |           209          |
+|       Android Permissions       |     29999    |          18154         |      183     |           152          |
+|      Kronodroid Real Device     |     78137    |          73510         |      483     |           287          |
+|              MH100K             |    101,975   |          20000         |     24833    |           201          |
+| Defensedroid Apicalls Closeness |     10476    |          10444         |     21997    |           201          |
+|   Defensedroid Apicalls Degree  |     10476    |          10444         |     21997    |           201          |
+|    Defensedroid Apicalls Katz   |     10476    |          10444         |     21997    |           201          |
+|         Defensedroid prs        |     11975    |          11950         |     2938     |           201          |
 ### Seria interessante colocar uma tabela comparativa simples como no exemplo abaixo:
 
 | Dataset | Método     | Nº Features | Acurácia | Recall | Modelo |
