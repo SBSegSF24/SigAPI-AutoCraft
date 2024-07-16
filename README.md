@@ -1,4 +1,4 @@
-## SigAPI AutoCraft: um método otimizado e generalista de seleção de características para detecção de malware Android
+## :zap: SigAPI AutoCraft: um método otimizado e generalista de seleção de características para detecção de malware Android
 
 Métodos de seleção de características são amplamente utilizados no contexto de detecção de malwares Android.
 O SigAPI, semelhante a outros métodos de seleção de características, foi desenvolvido e avaliado utilizando apenas dois datasets e, consequentemente, apresentou problemas de generalização em diversos datasets no contexto de malwares Android.
@@ -152,7 +152,7 @@ Para os demais datasets selecionados pelo método **otimizado**, substitua o val
 ***OBS: Recomenda-se armazenar os resultados gerados pelo método em uma pasta separada após cada execução.***
 
 
-# :dash: Ambiente de testes
+## :dash: Ambiente de testes
 
 O método foi testado no seguinte ambiente:
 - Notebook Intel Core i5-8265U da 8ª geração, CPU @1.60GHz (8 núcleos) e 8GB de memória RAM
