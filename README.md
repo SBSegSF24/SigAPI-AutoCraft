@@ -17,7 +17,7 @@ cd SF24_SigAPI
 
 ```
 
-## Executando em Docker :whale:
+## :docker: Executando em Docker :whale:
 
 1. Instalando o Docker:
 ```bash
@@ -83,7 +83,21 @@ pip install -r requirements.txt
 
 **Executando a ferramenta** (use **python 3.10.12** ou posterior)
 
-### Execução da SigAPI AutoCraft para um dataset
+
+## :dart: Reprodução dos experimentos
+
+### Execução do SigAPI Original para todos os datasets
+
+```
+./reproduzir_sigapi.sh
+```
+
+### Execução do SigAPI AutoCraft para todos os datasets
+```
+./reproduzir_sigapi_autocraft.sh
+```
+
+## Execução da SigAPI AutoCraft para um dataset
 
 #### Exemplo:
 Parâmetros:
@@ -137,19 +151,6 @@ Para os demais datasets selecionados pelo método **otimizado**, substitua o val
 
 ***OBS: Recomenda-se armazenar os resultados gerados pelo método em uma pasta separada após cada execução.***
 
-
-## :dart: Reprodução dos experimentos
-
-### Execução do SigAPI Original para todos os datasets
-
-```
-bash reproduzir_sigapi.sh
-```
-
-### Execução do SigAPI AutoCraft para todos os datasets
-```
-bash reproduzir_sigapi_autocraft.sh
-```
 
 # Ambiente de testes
 
