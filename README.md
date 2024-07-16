@@ -80,6 +80,12 @@ source venv/bin/activate
 pip install -r requirements.txt
 ~~~
 
+### Execução de scripts demos
+As execuções demo realizam a execução de um dos [datasets ](https://github.com/SBSegSF24/SigAPI-AutoCraft/blob/cbeaf5872abe324db5510c361975999da86d044c/Datasets/Balanceados/adroit_bl.csv) reduzidos. Sua execução leva menos de um minuto 
+**No ambiente docker**
+
+
+
 **Executando a ferramenta** (use **python 3.10.12** ou posterior)
 
 
@@ -154,8 +160,8 @@ Para os demais datasets selecionados pelo método **otimizado**, substitua o val
 ## :dash: Ambiente de testes
 
 O método foi testado no seguinte ambiente:
-- Notebook Intel Core i5-8265U da 8ª geração, CPU @1.60GHz (8 núcleos) e 8GB de memória RAM
-- Sistema operacional Ubuntu 22.04.4 LTS com Kernel 6.5.0-35-generic
+- Hardware: Intel Core i5-8265U, 8 core, 8 GB RAM. Software: Ubuntu 22.04.4 LTS, Kernel 6.5.0-35-generic
+- Hardware: Intel Core i7-10700, 8 cores, 16 GB RAM. Software: Ubuntu 24.02 LTS, Kernel 6.8.0-38-generic, Python 3.12.3,Docker 26.1.4
 
 
 O repositório está organizado da seguinte maneira:
