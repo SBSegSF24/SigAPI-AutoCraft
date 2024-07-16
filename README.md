@@ -68,7 +68,7 @@ pip install -r requirements.txt
 ~~~
 
 ## Execução de scripts demos
-As execuções demo realizam a execução de um dos [datasets ](https://github.com/SBSegSF24/SigAPI-AutoCraft/blob/cbeaf5872abe324db5510c361975999da86d044c/Datasets/Balanceados/adroit_bl.csv) reduzidos. A sua execução leva menos de um minuto em ambos os ambientes em uma máquina Intel Core i7-10700, 8 cores com 16 GB de RAM
+As execuções demo realizam a execução de um dos [datasets ](https://github.com/SBSegSF24/SigAPI-AutoCraft/blob/cbeaf5872abe324db5510c361975999da86d044c/Datasets/Balanceados/adroit_bl.csv) reduzidos. A sua execução leva menos de um minuto em ambos os ambientes em uma máquina Intel Core i7-10700, 8 cores com 16 GB de RAM.
 
 **No ambiente docker**
 ~~~sh
@@ -85,7 +85,7 @@ As execuções demo realizam a execução de um dos [datasets ](https://github.c
 ## :dart: Reproduzindo os experimentos do trabalho
 
 ### Execução do SigAPI Original para todos os datasets no ambiente local
-
+ A sua execução leva em torno de 3 horas e 45 minutos em uma máquina Intel Core i7-10700, 8 cores com 16 GB de RAM.
 ```
 ./reproduzir_sigapi.sh
 ```
