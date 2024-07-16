@@ -1,4 +1,4 @@
-## :zap: SigAPI AutoCraft: um método otimizado e generalista de seleção de características para detecção de malware Android
+## SigAPI AutoCraft: um método otimizado e generalista de seleção de características para detecção de malware Android
 
 Métodos de seleção de características são amplamente utilizados no contexto de detecção de malwares Android.
 O SigAPI, semelhante a outros métodos de seleção de características, foi desenvolvido e avaliado utilizando apenas dois datasets e, consequentemente, apresentou problemas de generalização em diversos datasets no contexto de malwares Android.
@@ -6,9 +6,8 @@ O SigAPI apresenta dois desafios que dificultam sua aplicação prática: a nece
 Para resolver esses problemas, desenvolvemos uma versão aprimorada do método, denominada SigAPI AutoCraft, que consegue atingir resultados promissores em dez datasets de malware Android.
 Os resultados indicam uma boa capacidade de generalização e um aumento no desempenho de predição em até 20%
 
-## [Artigo SigAPI Original](https://galib19.github.io/publications/SigapiSEKE2020)
 
-## Clonando o repositório Github
+## :octocat: Clonando o repositório Github
 ```bash
 
 git clone https://github.com/SBSegSF24/SigAPI-AutoCraft.git
@@ -216,3 +215,7 @@ O repositório está organizado da seguinte maneira:
 | drebin  | Modificado | 30          | 93.8%    | 95.1%  | SVM    |
 | android_permissions | Original   | 55          | 88.6%    | 87.3%  | MLP    |
 | android_permissions | Modificado | 40          | 90.1%    | 91.5%  | MLP    |
+
+## Outras informações
+
+#### [Link para o artigo do método SigAPI Original](https://galib19.github.io/publications/SigapiSEKE2020)
