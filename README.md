@@ -109,7 +109,7 @@ Para os demais datasets, substitua o valor do parâmetro `-d` conforme a lista a
 
 #### Exemplo:
 ```
-python3 run_ml.py -d Resultados/Original/Datasets/ORIGINAL-resultado-selecao-balanceados-adroit.csv -c rf
+python3 run_ml_RandomForest.py -d Resultados/Original/Datasets/ORIGINAL-resultado-selecao-balanceados-adroit.csv -c rf
 ```
 
 Para os demais datasets selecionados pelo método **original**, substitua o valor do parâmetro `-d` conforme a lista abaixo:
