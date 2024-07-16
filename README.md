@@ -166,8 +166,8 @@ Para os demais datasets selecionados pelo método **otimizado**, substitua o val
 ## :dash: Ambiente de testes
 
 O método foi testado no seguinte ambiente:
-- Hardware: Intel Core i5-8265U, 8 core, 8 GB RAM. Software: Ubuntu 22.04.4 LTS, Kernel 6.5.0-35-generic
-- Hardware: Intel Core i7-10700, 8 cores, 16 GB RAM. Software: Ubuntu 24.02 LTS, Kernel 6.8.0-38-generic, Python 3.12.3,Docker 26.1.4
+- Hardware: Intel Core i5-8265U, 8 core, 8 GB RAM. Software: Ubuntu 22.04.4 LTS, Kernel 6.5.0-35-generic, Python 3.10.12,  
+- Hardware: Intel Core i7-10700, 8 cores, 16 GB RAM. Software: Ubuntu 24.02 LTS, Kernel 6.8.0-38-generic, Python 3.12.3, Docker 26.1.4
 
 
 O repositório está organizado da seguinte maneira:
