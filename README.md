@@ -67,7 +67,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 ~~~
 
-## :mouse: Execução da demo
+## :mouse: Execução demo
 
 As demos executam o SigAPI AutoCraft em um único dataset reduzido ([dataset Adroit BL](https://github.com/SBSegSF24/SigAPI-AutoCraft/blob/cbeaf5872abe324db5510c361975999da86d044c/Datasets/Balanceados/adroit_bl.csv)). A demo leva **menos de 1 minuto** em uma máquina máquina _Intel Core i7-10700, 8 cores com 16 GB de RAM_.
 
@@ -86,7 +86,7 @@ As demos executam o SigAPI AutoCraft em um único dataset reduzido ([dataset Adr
 ## :dart: Reproduzindo os experimentos do trabalho
 
 ### Execução do SigAPI Original para todos os datasets no ambiente local
- A sua execução leva em torno de 3 horas e 45 minutos em uma máquina Intel Core i7-10700, 8 cores com 16 GB de RAM.
+ A execução leva em torno de **3 horas e 45 minutos** em uma máquina _Intel Core i7-10700, 8 cores com 16 GB de RAM_.
 ```
 ./reproduzir_sigapi.sh
 ```
