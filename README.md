@@ -90,7 +90,7 @@ As execuções demo realizam a execução de um dos [datasets ](https://github.c
 ```
 ./reproduzir_sigapi_autocraft.sh
 ```
-## Executando em um container em modo **persistente** ou **não persistente**
+### Executando em um container em modo **persistente** ou **não persistente**
 
 **Não persistente**: Os arquivos de saida serão apagados quando o conteiner finalizar a execução.
 
