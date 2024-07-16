@@ -1,2 +1,2 @@
 #!/bin/bash
-python3 run_ml_RandomForest.py -d Resultados/Original/Datasets/ORIGINAL-resultado-selecao-balanceados-adroit.csv -c rf
+python3 run_ml_RandomForest.py -d Resultados/Otimizado/Datasets/resultado-selecao-BALANCEADOS-adroit_bl.csv -c rf

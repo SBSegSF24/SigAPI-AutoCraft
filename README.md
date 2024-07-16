@@ -16,7 +16,8 @@ cd SF24_SigAPI
 
 ```
 
-## :whale: Executando em Docker
+## Preparação e instalação
+### :whale: Instalação em Docker
 
 1. Instalando o Docker:
 ```bash
@@ -32,25 +33,7 @@ sudo usermod -aG docker $USER # necessário apenas se o usuário ainda não util
 docker build -t sigapiautocraft:latest .
 
 ```
-
-3. Iniciando um container em modo **persistente** ou **não persistente**
-
-**Não persistente**: Os arquivos de saida serão apagados quando o conteiner finalizar a execução.
-
-```bash
-
-docker run -it sigapiautocraft
-
-```
-**Persistente**: Os arquivos de saída da execução serão salvos no diretório atual
-
-```bash
-
-docker run -v $(readlink -f .):/sigapi -it sigapiautocraft
-
-```
-
-## :penguin: Executando diretamente no shell do Linux host
+### :penguin: Instalação no ambiente local
 
 **Instalando Python, se necessário**
 
@@ -97,16 +80,33 @@ As execuções demo realizam a execução de um dos [datasets ](https://github.c
 
 ## :dart: Reproduzindo os experimentos do trabalho
 
-### Execução do SigAPI Original para todos os datasets
+### Execução do SigAPI Original para todos os datasets no ambiente local
 
 ```
 ./reproduzir_sigapi.sh
 ```
 
-### Execução do SigAPI AutoCraft para todos os datasets
+### Execução do SigAPI AutoCraft para todos os datasets no ambiente local
 ```
 ./reproduzir_sigapi_autocraft.sh
 ```
+## Executando em um container em modo **persistente** ou **não persistente**
+
+**Não persistente**: Os arquivos de saida serão apagados quando o conteiner finalizar a execução.
+
+```bash
+
+docker run -it sigapiautocraft
+
+```
+**Persistente**: Os arquivos de saída da execução serão salvos no diretório atual
+
+```bash
+
+docker run -v $(readlink -f .):/sigapi -it sigapiautocraft
+
+```
+
 
 ## :shell: Execução manual do SigAPI AutoCraft para um dataset
 
