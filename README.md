@@ -83,7 +83,7 @@ pip install -r requirements.txt
 
 **Executando a ferramenta** (use **python 3.10.12** ou posterior)
 
-### Execução da SigAPI AutoCraft para um Dataset
+### Execução da SigAPI AutoCraft para um dataset
 
 #### Exemplo:
 Parâmetros:
@@ -105,7 +105,7 @@ Para os demais datasets, substitua o valor do parâmetro `-d` conforme a lista a
 - `Datasets/Balanceados/reduced_20k_mh_100k_filtered.csv`
 - `Datasets/Balanceados/reduced_balanced_defensedroid_prs.csv`
 
-### Execução do método ML Random Forest para um Dataset reduzido
+### Execução do Random Forest para um dataset reduzido
 
 #### Exemplo:
 ```
