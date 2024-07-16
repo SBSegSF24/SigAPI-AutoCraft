@@ -21,5 +21,5 @@ COPY . ./
 RUN python3 -m pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
-RUN chmod +x sigapi-autocraft.sh
-CMD ["./sigapi-autocraft.sh"]
+RUN chmod +x reproduzir_sigapi_autocraft.sh
+CMD ["./reproduzir_sigapi_autocraft.sh"]

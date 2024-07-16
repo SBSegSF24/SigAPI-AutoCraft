@@ -29,7 +29,7 @@ sudo usermod -aG docker $USER # necessário apenas se o usuário ainda não util
 
 2. Construíndo a imagem com o Docker:
 ```bash
-docker build -t sigapi:latest .
+docker build -t sigapiautocraft:latest .
 
 ```
 
@@ -39,14 +39,14 @@ docker build -t sigapi:latest .
 
 ```bash
 
-docker run -it sigapi
+docker run -it sigapiautocraft
 
 ```
 **Persistente**: Os arquivos de saída da execução serão salvos no diretório atual
 
 ```bash
 
-docker run -v $(readlink -f .):/sigapi -it sigapi
+docker run -v $(readlink -f .):/sigapi -it sigapiautocraft
 
 ```
 
