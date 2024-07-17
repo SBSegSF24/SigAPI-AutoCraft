@@ -82,6 +82,8 @@ As demos executam o SigAPI AutoCraft em um único dataset reduzido ([dataset Adr
 
 **Executando a ferramenta** (use **python 3.10.12** ou posterior)
 
+Execução do SigAPI Original para todos os datasets no ambiente local
+ A execução leva em torno de **3 horas e 45 minutos** em uma máquina _AMD Ryzen 7 5800X 8 cores com 64 GB de ram_.
 
 ## :dart: Reproduzindo os experimentos do trabalho
 
