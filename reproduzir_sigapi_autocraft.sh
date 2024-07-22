@@ -7,9 +7,10 @@ CHECK_PKGS=`pip show ${PKGS[@]} | grep -i -w "not found"`
 
 set_increment(){
     TOTAL_FEATURES=$1
-    [[ $TOTAL_FEATURES -lt 50 ]] && INCREMENT=1 && return
-    [[ $TOTAL_FEATURES -lt 1000 ]] && INCREMENT=1 && return
-    INCREMENT=1
+   # [[ $TOTAL_FEATURES -lt 50 ]] && INCREMENT=1 && return
+   # [[ $TOTAL_FEATURES -lt 1000 ]] && INCREMENT=1 && return
+    INCREMENT=$((TOTAL_FEATURES * 1 /100))
+    echo $INCREMENT
 }
 
 sigapi(){
