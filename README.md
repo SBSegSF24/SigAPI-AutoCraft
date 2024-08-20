@@ -15,7 +15,7 @@ Os resultados indicam uma boa capacidade de generalização e um aumento no dese
 
 git clone https://github.com/SBSegSF24/SigAPI-AutoCraft.git
 
-cd SF24_SigAPI
+cd SigAPI-AutoCraft
 
 ```
 
