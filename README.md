@@ -228,16 +228,7 @@ O repositório está organizado da seguinte maneira:
 |   Defensedroid Apicalls Degree  |     10476    |          10444         |     21997    |           201          |
 |    Defensedroid Apicalls Katz   |     10476    |          10444         |     21997    |           201          |
 |         Defensedroid prs        |     11975    |          11950         |     2938     |           201          |
-### Seria interessante colocar uma tabela comparativa simples como no exemplo abaixo:
 
-| Dataset | Método     | Nº Features | Acurácia | Recall | Modelo |
-|---------|------------|-------------|----------|--------|--------|
-| adroit  | Original   | 37          | 94.2%    | 93.5%  | RF     |
-| adroit  | Modificado | 22          | 95.2%    | 97.5%  | RF     |
-| drebin  | Original   | 45          | 91.5%    | 92.8%  | SVM    |
-| drebin  | Modificado | 30          | 93.8%    | 95.1%  | SVM    |
-| android_permissions | Original   | 55          | 88.6%    | 87.3%  | MLP    |
-| android_permissions | Modificado | 40          | 90.1%    | 91.5%  | MLP    |
 
 ## Outras informações
 
