@@ -263,7 +263,7 @@ def calculateMetricas(new_X,y):
     - y : Série contendo os rótulos de classe ou variáveis alvo associadas às amostras em `new_X`.
 
     Retorna:
-    - list: Lista contendo as métricas de desempenho calculadas. A lista inclui os seguintes valores na ordem:
+    -metricas: Lista contendo as métricas de desempenho calculadas. A lista inclui os seguintes valores na ordem:
         - Acurácia (accuracy)
         - Precisão (precision)
         - Revocação (recall)
