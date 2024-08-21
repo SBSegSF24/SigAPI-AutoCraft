@@ -22,6 +22,22 @@ import matplotlib.pyplot as plt
 from sklearn import metrics
 
 def correlation_phase(X, y, k, method, methods):
+    """
+    Executa a fase de correlação em um conjunto de dados, removendo características altamente correlacionadas.
+
+    Parâmetros:
+    - X : DataFrame contendo as características (features) do conjunto de dados.
+    - y : Série contendo os rótulos de classe correspondentes às amostras em `X`.
+    - k : Número de características a serem selecionadas pelo método de seleção de características especificado.
+    - method : Nome do método de seleção de características a ser utilizado. Este nome deve corresponder a uma chave no dicionário `methods`.
+    - methods : Dicionário onde as chaves são nomes de métodos de seleção de características e os valores são dicionários que contêm as funções de seleção associadas.
+
+    Retorna:
+    - new_X : DataFrame contendo as características após a remoção de características altamente correlacionadas, com a coluna de rótulos de classe adicionada de volta.
+    """
+
+
+
     feature_scores = methods[method]['function'](X, y, k)
     new_X = X[list(feature_scores['features'])]
 
@@ -48,6 +64,20 @@ def correlation_phase(X, y, k, method, methods):
     return new_X
 
 def parse_args(argv):
+    """
+    Analisa e retorna os argumentos da linha de comando fornecidos ao script.
+
+    Parâmetros:
+    - argv : Lista de argumentos da linha de comando.
+
+    Retorna:
+    - args : Objeto Namespace contendo os valores dos argumentos de linha de comando, com os seguintes atributos:
+        - threshold : Threshold para a diferença entre métricas em cada incremento no número de características, valor padrão: 0.03.
+        - initial_n_features : Número inicial de características a serem utilizadas, valor padrão: 1.
+        - increment : Valor pelo qual o número inicial de características será incrementado em cada iteração, valor padrão: 1.
+    """    
+
+
     base_parser = get_base_parser()
     parser = ArgumentParser(parents=[base_parser])
     parser.add_argument('-t', '--threshold', type = float, default = 0.03,
@@ -60,10 +90,32 @@ def parse_args(argv):
     return args
 
 def get_moving_average(data, window_size=5):
+    """
+    Calcula a média móvel de uma série  utilizando uma janela deslizante.
+
+    Parâmetros:
+    - data (: Sequência de dados numéricos sobre a qual a média móvel será calculada.
+    - window_size : Tamanho da janela deslizante utilizada para calcular a média móvel. O valor padrão é 5.
+
+    Retorna:
+    - moving_averages : Um array contendo as médias móveis calculadas para a série de dados, de acordo com o tamanho da janela especificado.
+    """    
     cumsum_vec = np.cumsum(np.insert(data, 0, 0))
     return (cumsum_vec[window_size:] - cumsum_vec[:-window_size]) / window_size
 
 def get_minimal_range_suggestion(df, t=0.001, window_size=5):
+    """
+    Sugere o menor índice no qual a variação de gradiente de médias móveis excede um determinado limiar, dentro de uma janela deslizante.
+
+    Parâmetros:
+    - df : DataFrame contendo os dados numéricos sobre os quais a análise será realizada.
+    - t : Limiar (threshold) para a diferença de gradiente que deve ser excedido para considerar uma mudança significativa. O valor padrão é 0.001.
+    - window_size (: Tamanho da janela deslizante utilizada para calcular as médias móveis. O valor padrão é 5.
+
+    Retorna:
+    - int: O menor índice no DataFrame onde a variação no gradiente da média móvel excede o limiar `t`. Se nenhuma variação satisfatória for encontrada, retorna `-1`.
+    """
+
     moving_averages = np.array([get_moving_average(np.array(df)[:, i], window_size) for i in range(df.shape[1])]).T
     gradients = np.gradient(moving_averages, axis=0)
     diffs = gradients[1:] - gradients[:-1]
@@ -76,6 +128,19 @@ def get_minimal_range_suggestion(df, t=0.001, window_size=5):
 """# **Função Incremento** """
 
 def calculateMutualInformationGain(features, target, k):
+    """
+    Calcula o ganho de informação mútua para as características de um conjunto de dados e retorna as principais características baseadas nesse ganho.
+
+    Parâmetros:
+    - features : DataFrame contendo as características (features) do conjunto de dados, onde cada coluna representa uma característica.
+    - target : Série contendo os rótulos de classe ou variáveis alvo associadas às amostras em `features`.
+    - k : Número de principais características a serem retornadas com base no ganho de informação mútua.
+
+    Retorna:
+    - df: DataFrame contendo as `k` características com o maior ganho de informação mútua, ordenado em ordem decrescente de ganho. O DataFrame possui duas colunas:
+        - "features": Nome das características.
+        - "score": Ganho de informação mútua associado a cada característica.
+    """
     feature_names = features.columns
     mutualInformationGain = mutual_info_classif(features, target, random_state = 0)
     data = {"features": feature_names, "score": mutualInformationGain}
@@ -84,6 +149,19 @@ def calculateMutualInformationGain(features, target, k):
     return df[:k]
 
 def calculateRandomForestClassifier(features, target,k):
+    """
+    Calcula a importância das características utilizando um classificador Random Forest e retorna as principais características com base na importância.
+
+    Parâmetros:
+    - features : DataFrame contendo as características (features) do conjunto de dados, onde cada coluna representa uma característica.
+    - target : Série contendo os rótulos de classe ou variáveis alvo associadas às amostras em `features`.
+    - k : Número de principais características a serem retornadas com base no ganho de informação mútua.
+
+    Retorna:
+    - df: DataFrame contendo as `k` características com o maior ganho de informação mútua, ordenado em ordem decrescente de ganho. O DataFrame possui duas colunas:
+        - "features": Nome das características.
+        - "score": Ganho de informação mútua associado a cada característica.
+    """   
     feature_names= np.array(features.columns.values.tolist())
     test = RandomForestClassifier(random_state = 0)
     test = test.fit(features,target)
@@ -95,6 +173,19 @@ def calculateRandomForestClassifier(features, target,k):
     return df
 
 def calculateExtraTreesClassifier(features, target, k):
+    """
+    Calcula a importância das características utilizando um classificador Extra Trees e retorna as principais características com base na importância.
+
+    Parâmetros:
+    - features : DataFrame contendo as características (features) do conjunto de dados, onde cada coluna representa uma característica.
+    - target : Série contendo os rótulos de classe ou variáveis alvo associadas às amostras em `features`.
+    - k : Número de principais características a serem retornadas com base no ganho de informação mútua.
+
+    Retorna:
+    - df: DataFrame contendo as `k` características com o maior ganho de informação mútua, ordenado em ordem decrescente de ganho. O DataFrame possui duas colunas:
+        - "features": Nome das características.
+        - "score": Ganho de informação mútua associado a cada característica.
+    """
     feature_names= np.array(features.columns.values.tolist())
     test = ExtraTreesClassifier(random_state = 0)
     test = test.fit(features,target)
@@ -106,6 +197,20 @@ def calculateExtraTreesClassifier(features, target, k):
     return df
 
 def calculateRFERandomForestClassifier(features, target, k):
+    """
+    Calcula a importância das características utilizando um classificador RFE Random Forest e retorna as principais características com base na importância.
+
+    Parâmetros:
+    - features : DataFrame contendo as características (features) do conjunto de dados, onde cada coluna representa uma característica.
+    - target : Série contendo os rótulos de classe ou variáveis alvo associadas às amostras em `features`.
+    - k : Número de principais características a serem retornadas com base no ganho de informação mútua.
+
+    Retorna:
+    - df: DataFrame contendo as `k` características com o maior ganho de informação mútua, ordenado em ordem decrescente de ganho. O DataFrame possui duas colunas:
+        - "features": Nome das características.
+        - "score": Ganho de informação mútua associado a cada característica.
+    """
+
     feature_names= np.array(features.columns.values.tolist())
     rfe = RFE(estimator = RandomForestClassifier(), n_features_to_select = k)
     model = rfe.fit(features,target)
@@ -115,6 +220,20 @@ def calculateRFERandomForestClassifier(features, target, k):
     return df
 
 def calculateRFEGradientBoostingClassifier(features, target,k):
+    """
+    Calcula a importância das características utilizando um classificador RFE Gradient Boost e retorna as principais características com base na importância.
+
+    Parâmetros:
+    - features : DataFrame contendo as características (features) do conjunto de dados, onde cada coluna representa uma característica.
+    - target : Série contendo os rótulos de classe ou variáveis alvo associadas às amostras em `features`.
+    - k : Número máximo de principais características a serem retornadas com base na importância.
+
+    Retorna:
+    - df: DataFrame contendo as `k` características mais importantes com base na importância calculada pelo classificador RFE Gradient Boost. O DataFrame possui duas colunas:
+        - "features": Nome das características.
+        - "score": Importância associada a cada característica.
+    """
+
     feature_names= np.array(features.columns.values.tolist())
     rfe = RFE(estimator = GradientBoostingClassifier(), n_features_to_select = k)
     model = rfe.fit(features, target)
@@ -125,6 +244,19 @@ def calculateRFEGradientBoostingClassifier(features, target,k):
 
 
 def calculateSelectKBest(features, target,k):
+    """
+    Calcula a pontuação de seleção de características usando o método Chi-quadrado e retorna as principais características com base nessas pontuações.
+
+    Parâmetros:
+    - features : DataFrame contendo as características (features) do conjunto de dados, onde cada coluna representa uma característica.
+    - target : Série contendo os rótulos de classe ou variáveis alvo associadas às amostras em `features`.
+    - k : Número de principais características a serem retornadas com base no ganho de informação mútua.
+
+    Retorna:
+    - df: DataFrame contendo as `k` características com o maior ganho de informação mútua, ordenado em ordem decrescente de ganho. O DataFrame possui duas colunas:
+        - "features": Nome das características.
+        - "score": Ganho de informação mútua associado a cada característica.
+    """   
     feature_names= np.array(features.columns.values.tolist())
     chi2_selector= SelectKBest(score_func = chi2, k= k)
     chi2_selector.fit(features,target)
@@ -134,6 +266,20 @@ def calculateSelectKBest(features, target,k):
 
 
 def calculateMetricas(new_X,y):
+    """
+    Calcula as métricas de desempenho de um classificador Random Forest em um conjunto de dados de teste e retorna uma lista com os resultados das métricas.
+
+    Parâmetros:
+    - new_X : DataFrame contendo as características (features) para treinamento e teste do classificador.
+    - y : Série contendo os rótulos de classe ou variáveis alvo associadas às amostras em `new_X`.
+
+    Retorna:
+    - metricas: Lista contendo as métricas de desempenho calculadas. A lista inclui os seguintes valores na ordem:
+        - Acurácia (accuracy)
+        - Precisão (precision)
+        - Revocação (recall)
+        - F1 Score (f1)
+    """    
     new_X_train,new_X_test, y_train, y_test = train_test_split(new_X, y, test_size = 0.3,random_state = 0)
 
     teste = RandomForestClassifier()
@@ -158,6 +304,18 @@ methods = { 'mutualInformation': { 'function': calculateMutualInformationGain, '
 #---------------------------------------------------------------------
 
 def distribution(df, metric, step, max_value = 1.0):
+    """
+    Calcula e analisa a distribuição de uma métrica em um DataFrame, baseada em thresholds variáveis. A função também determina o número mínimo de características selecionadas para um dado ponto percentual na distribuição.
+
+    Parâmetros:
+    - df : DataFrame contendo as características e suas respectivas métricas. Deve incluir a coluna referenciada por `metric`.
+    - metric : Nome da coluna no DataFrame `df` que contém as métricas a serem analisadas.
+    - step : O tamanho do passo para variar o threshold. Define a precisão da análise percentual.
+    - max_value : O valor máximo do threshold a ser considerado. Valor padrão é 1.0.
+
+    Retorna:
+    - min_features: Número mínimo de características selecionadas para um threshold percentual de pelo menos 30%. Este valor representa a soma acumulada das características selecionadas quando o percentual de threshold atinge ou excede 30%.
+    """
     pd.options.display.float_format = '{:.2f}'.format
     count = 0
     min_features = 0
@@ -188,6 +346,18 @@ def distribution(df, metric, step, max_value = 1.0):
 
 
 def calculate_mig_features(features, target):
+    """
+    Calcula o ganho de informação mútua (Mutual Information Gain) para as características fornecidas e retorna um DataFrame contendo a importância de cada característica.
+
+    Parâmetros:
+    - features : DataFrame contendo as características (features) do conjunto de dados, onde cada coluna representa uma característica.
+    - target : Série contendo os rótulos de classe ou variáveis alvo associadas às amostras em `features`.
+
+    Retorna:
+    - df: DataFrame contendo a importância das características calculada pelo ganho de informação mútua. O DataFrame possui duas colunas:
+        - "feature": Nome das características.
+        - "score": Valor do ganho de informação mútua associado a cada característica.
+    """   
     features_names = features.columns
     mutualInformationGain = mutual_info_classif(features, target, random_state = 0)
     data = {'feature': features_names, 'score': mutualInformationGain}
@@ -196,6 +366,18 @@ def calculate_mig_features(features, target):
     return df
 
 def mig_features():
+    """
+    Avalia o ganho de informação mútua (Mutual Information Gain) das características em um conjunto de dados, imprime o valor máximo de ganho de informação e calcula a distribuição das características com base em um limiar definido.
+
+    Esta função utiliza as seguintes funções auxiliares:
+    - `get_X_y`: Extrai as características e o alvo do conjunto de dados com base nos argumentos fornecidos.
+    - `calculate_mig_features`:  Calcula o ganho de informação mútua (Mutual Information Gain) para as características fornecidas e retorna um DataFrame contendo a importância de cada característica.
+    - `distribution`: Calcula e analisa a distribuição de uma métrica em um DataFrame, baseada em thresholds variáveis. A função também determina o número mínimo de características selecionadas para um dado ponto percentual na distribuição.
+
+
+    Retorna:
+    - min: O número mínimo de características com base na distribuição do ganho de informação mútua.
+    """   
     #print_info('>>> Evaluating Information Gain <<<')
     X_dataset, y_dataset = get_X_y(parsed_args, get_dataset(parsed_args))
     mig = calculate_mig_features(X_dataset, y_dataset)
@@ -205,6 +387,17 @@ def mig_features():
     return min
 
 def pca_features():  
+    """
+    Avalia a importância das características utilizando Análise de Componentes Principais (PCA), imprime o valor máximo da importância das componentes principais e calcula a distribuição das características com base em um limiar definido.
+
+    Esta função utiliza as seguintes funções auxiliares:
+    - `get_X_y`: Extrai as características e o alvo do conjunto de dados com base nos argumentos fornecidos.
+    - `calculate_PCA`: Calcula a importância das características utilizando Análise de Componentes Principais (PCA). Retorna um DataFrame com as características ordenadas pela importância média calculada a partir das componentes principais.
+    - `distribution`: Calcula e analisa a distribuição de uma métrica em um DataFrame, baseada em thresholds variáveis. A função também determina o número mínimo de características selecionadas para um dado ponto percentual na distribuição.
+
+    Retorna:
+    - min: O número mínimo de características com base na distribuição do ganho de informação mútua.
+    """
     #print_info('>>> PCA <<<')
     X_dataset, y_dataset = get_X_y(parsed_args, get_dataset(parsed_args))
     pca = calculate_PCA(X_dataset)
@@ -214,6 +407,19 @@ def pca_features():
     return min
 
 def calculate_PCA(features):
+    """
+    Calcula a importância das características utilizando Análise de Componentes Principais (PCA). Retorna um DataFrame com as características ordenadas pela importância média calculada a partir das componentes principais.
+
+    Parâmetros:
+    - features : DataFrame
+        DataFrame contendo as características (features) do conjunto de dados, onde cada coluna representa uma característica.
+
+    Retorna:
+    - df
+        DataFrame contendo as características ordenadas pela importância calculada. O DataFrame possui duas colunas:
+        - "feature": Nome das características.
+        - "score": Importância média associada a cada característica.
+    """
     features_names = features.columns
     n_components = 3
     pca = PCA(n_components)
@@ -227,6 +433,17 @@ def calculate_PCA(features):
 #---------------------------------------------------------------------
 
 def is_method_stable(previous_metrics, current_metrics, t=0.03):
+    """
+    Verifica se as métricas atuais de desempenho de um modelo são estáveis em relação às métricas anteriores, com base em um limiar de tolerância.
+
+    Parâmetros:
+    - previous_metrics : Lista ou array contendo as métricas de desempenho anteriores do modelo.
+    - current_metrics : Lista ou array contendo as métricas de desempenho atuais do modelo.
+    - t : Tolerância para a diferença entre as métricas anteriores e atuais. Valor padrão: 0.03.
+
+    Retorna:
+    - bool: `True` se todas as diferenças absolutas entre as métricas atuais e anteriores forem menores que o limiar `t`, indicando que o método é estável. Caso contrário, retorna `False`.
+    """
     differences = abs(current_metrics - previous_metrics)
     print("differences: ",differences)
     if(all(differences < t)):
@@ -234,6 +451,18 @@ def is_method_stable(previous_metrics, current_metrics, t=0.03):
     return False
 
 def calculate_distance(accuracy, precision, recall, f1):
+    """
+    Calcula a distância euclidiana média entre as métricas de desempenho fornecidas (acurácia, precisão, recall e F1-score).
+
+    Parâmetros:
+    - accuracy : Valor da métrica de acurácia (accuracy), representando a proporção de previsões corretas sobre o total de previsões.
+    - precision :  Valor da métrica de precisão (precision), representando a proporção de verdadeiros positivos sobre o total de previsões positivas.
+    - recall :  Valor da métrica de recall (recall), representando a proporção de verdadeiros positivos sobre o total de casos positivos reais.
+    - f1 : Valor da métrica F1-score, a média harmônica ponderada entre precisão e recall.
+
+    Retorna:
+    - distance: Distância euclidiana média calculada a partir das métricas fornecidas.
+    """
     # calcular a distância entre as métricas
     # distância euclidiana média
     distance = np.mean(np.linalg.norm(np.array([accuracy, precision, recall, f1]), axis=0))
@@ -243,6 +472,25 @@ def calculate_triangle_area(base, height):
     return 0.5 * base * height
 
 def plot_radar_with_area(metrics_history):
+    """
+    Plota gráficos de radar e calcula a área total coberta pelas métricas de desempenho para diferentes métodos.
+
+    Parâmetros:
+    - metrics_history : dict
+        Dicionário onde as chaves são os nomes dos métodos e os valores são dicionários contendo listas de métricas ao longo das iterações. Cada dicionário de métricas possui as seguintes chaves:
+        - 'features' : Lista de números de características usadas em cada iteração.
+        - 'accuracy' : Lista de valores de acurácia (accuracy) calculados ao longo das iterações.
+        - 'precision' : 
+            Lista de valores de precisão (precision) calculados ao longo das iterações.
+        - 'recall' : list
+            Lista de valores de recall (recall) calculados ao longo das iterações.
+        - 'f1' : list
+            Lista de valores de F1-score calculados ao longo das iterações.
+
+    Retorna:
+    - float
+        Área total coberta pelas métricas de desempenho para todos os métodos.
+    """
     total_area = 0
 
     for method_name, metrics in metrics_history.items():
@@ -274,6 +522,22 @@ def plot_radar_with_area(metrics_history):
     plt.show()'''
 
 def selection_phase(X, y, cols, methods, num_features=1, increment=1):
+    """
+    Realiza a fase de seleção de características utilizando diversos métodos e avalia o desempenho dos métodos ao longo do processo de seleção. 
+    - X : DataFrame contendo as características (features) do conjunto de dados.
+    - y ( Série contendo os rótulos de classe ou variáveis alvo associadas às amostras em `X`.
+    - methods : Dicionário contendo os métodos de seleção de características e suas respectivas funções e resultados. A estrutura esperada é:
+    - Chave : Nome do método.
+    - Valor : Dicionário contendo:
+        - 'function': Função que realiza a seleção de características e retorna um DataFrame com as características e suas pontuações.
+        - 'results': Array ou lista para armazenar os resultados da métrica para cada número de características.
+    - num_features : Número inicial de características a serem consideradas. Valor padrão: 1.
+    - increment : Valor para incrementar o número de características a cada iteração. Valor padrão: 1.
+
+    Retorna:
+        - best_stable_method : Nome do método de seleção de características que apresentou a maior acurácia estável.
+        - k : Número de características associadas ao melhor método estável.
+    """
     has_found_stable_method = False
     best_stable_method = None
     #best_distance = float('inf')
