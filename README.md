@@ -140,19 +140,19 @@ Para os demais datasets, substitua o valor do parâmetro `-d` conforme a lista a
 
 ### Exemplo:
 ```
-python3 run_ml_RandomForest.py -d Resultados/Paper_SF24_Trilha_Principal/Original/Datasets/ORIGINAL-resultado-selecao-balanceados-adroit.csv -c rf
+python3 run_ml_RandomForest.py -d Resultados/Paper_SBSeg_Trilha_Principal/Original/Datasetss/ORIGINAL-resultado-selecao-balanceados-adroit.csv -c rf
 ```
 
 Para os demais datasets selecionados pelo método **original**, substitua o valor do parâmetro `-d` conforme a lista abaixo:
-- `Resultados/Paper_SF24_Trilha_Principal/Original/Datasets/ORIGINAL-resultado-selecao-balanceados-drebin_215_all.csv`
-- `Resultados/Paper_SF24_Trilha_Principal/Original/Datasets/ORIGINAL-resultado-selecao-balanceados-adroit.csv`
-- `Resultados/Paper_SF24_Trilha_Principal/Original/Datasets/ORIGINAL-resultado-selecao-balanceados-android_permissions.csv`
-- `Resultados/Paper_SF24_Trilha_Principal/Original/Datasets/ORIGINAL-resultado-selecao-balanceados-kronodroid_real_device.csv`
-- `Resultados/Paper_SF24_Trilha_Principal/Original/Datasets/ORIGINAL-resultado-selecao-balanceados-katz.csv`
-- `Resultados/Paper_SF24_Trilha_Principal/Original/Datasets/ORIGINAL-resultado-selecao-balanceados-degree.csv`
-- `Resultados/Paper_SF24_Trilha_Principal/Original/Datasets/ORIGINAL-resultado-selecao-balanceados-closeness.csv`
-- `Resultados/Paper_SF24_Trilha_Principal/Original/Datasets/ORIGINAL-resultado-selecao-balanceados-MH100K.csv`
-- `Resultados/Paper_SF24_Trilha_Principal/Original/Datasets/ORIGINAL-resultado-selecao-balanceados-defensedroid_prs.csv`
+- `Resultados/Paper_SBSeg_Trilha_Principal/Original/Datasets/ORIGINAL-resultado-selecao-balanceados-drebin_215_all.csv`
+- `Resultados/Paper_SBSeg_Trilha_Principal/Original/Datasets/ORIGINAL-resultado-selecao-balanceados-adroit.csv`
+- `Resultados/Paper_SBSeg_Trilha_Principal/Original/Datasetss/ORIGINAL-resultado-selecao-balanceados-android_permissions.csv`
+- `Resultados/Paper_SBSeg_Trilha_Principal/Original/Datasets/ORIGINAL-resultado-selecao-balanceados-kronodroid_real_device.csv`
+- `Resultados/Paper_SBSeg_Trilha_Principal/Original/Datasets/ORIGINAL-resultado-selecao-balanceados-katz.csv`
+- `Resultados/Paper_SBSeg_Trilha_Principal/Original/Datasets/ORIGINAL-resultado-selecao-balanceados-degree.csv`
+- `Resultados/Paper_SBSeg_Trilha_Principal/Original/Datasets/ORIGINAL-resultado-selecao-balanceados-closeness.csv`
+- `Resultados/Paper_SBSeg_Trilha_Principal/Original/Datasets/ORIGINAL-resultado-selecao-balanceados-MH100K.csv`
+- `Resultados/Paper_SBSeg_Trilha_Principal/Original/Datasets/ORIGINAL-resultado-selecao-balanceados-defensedroid_prs.csv`
 
 Para os demais datasets selecionados pelo método **otimizado**, substitua o valor do parâmetro `-d` conforme a lista abaixo:
 
