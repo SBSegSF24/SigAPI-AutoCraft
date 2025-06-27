@@ -1,16 +1,12 @@
-## SigAPI AutoCraft: um método otimizado e generalista de seleção de características para detecção de malware Android
+## Generalizing Feature Selection in Android Malware Detection: The SigAPI AutoCraft Approach
 
-Métodos de seleção de características são amplamente utilizados no contexto de detecção de malwares Android.
-O SigAPI, semelhante a outros métodos de seleção de características, foi desenvolvido e avaliado utilizando apenas dois datasets e, consequentemente, apresentou problemas de generalização em diversos datasets no contexto de malwares Android.
-O SigAPI apresenta dois desafios que dificultam sua aplicação prática: a necessidade de definir um número mínimo de características e a instabilidade das métricas. Além disso, não é eficiente em generalizar na diversidade de datasets Android.
-Para resolver esses problemas, desenvolvemos uma versão aprimorada do método, denominada SigAPI AutoCraft, que consegue atingir resultados promissores em dez datasets de malware Android.
-Os resultados indicam uma boa capacidade de generalização e um aumento no desempenho de predição em até 20%
+Feature selection methods are widely used in Android malware detection to enhance accuracy and efficiency by isolating the most relevant features. However, their generalizability is often limited---approaches such as SigAPI are typically developed and evaluated on only a small number of datasets, limiting their performance across diverse scenarios. The practical application of SigAPI is further constrained by the need to predefine a minimum number of features, the instability of its evaluation metrics, and its inefficiency in adapting to the heterogeneity commonly found in Android datasets.
+To mitigate these limitations, we have developed SigAPI AutoCraft, an enhanced and automated version of the method. SigAPI AutoCraft demonstrates promising results across ten Android malware datasets, significantly improving generalization. Our findings underscore its robust generalization capabilities and up to a 20% improvement in prediction performance.
 
 
+## :hammer_and_wrench: Setup & Installation
 
-## Preparação e instalação
-
-### :octocat: Clonando o repositório Github
+### :octocat: Clone the GitHub Repository
 ```bash
 
 git clone https://github.com/SBSegSF24/SigAPI-AutoCraft.git
@@ -19,164 +15,130 @@ cd SigAPI-AutoCraft
 
 ```
 
+### :whale: Docker Environment
 
-
-### :whale: Instalação no ambiente Docker
-
-1. Instalando o Docker:
+1. Install Docker:
 ```bash
+
+sudo apt update
 
 sudo apt install docker docker.io
 
-sudo usermod -aG docker $USER # necessário apenas se o usuário ainda não utilizar docker em modo usuário
+sudo usermod -aG docker $USER
 
 ```
 
-2. Construíndo a imagem com o Docker:
+2. Build the Docker image:
 ```bash
 docker build -t sigapiautocraft:latest .
 
 ```
-### :penguin: Instalação no ambiente local
+### :penguin: Local Environment
 
-**Instalando Python, se necessário**
+1. Install Python 3 (if necessary)
+```bash
 
-~~~sh
 sudo apt update
 
-sudo apt install python3
-~~~
+sudo apt install -y python3 python3-venv python3-pip
 
-**Instalando o gerenciado padrão de pacotes do Python (pip), se necessário**
+```
 
-~~~sh
-sudo apt install python3-pip
-~~~
+2. Create and activate a virtual environment
+```bash
 
-**Use ambiente virtual Python**
-
-~~~sh
-sudo apt install python3-venv
 python3 -m venv venv
+
 source venv/bin/activate
-~~~
 
-**Instalando pacotes necessários**
+```
 
-~~~sh
+3. Install required Python packages
+```bash
+
 pip install -r requirements.txt
-~~~
 
-## :mouse: Execução demo
+```
 
-As demos executam o SigAPI AutoCraft em um único dataset reduzido ([dataset Adroit BL](https://github.com/SBSegSF24/SigAPI-AutoCraft/blob/cbeaf5872abe324db5510c361975999da86d044c/Datasets/Balanceados/adroit_bl.csv)). A demo leva **menos de 1 minuto** em uma máquina máquina _AMD Ryzen 7 5800X 8 cores com 64 GB de ram_.
+## :desktop_computer: Demo Execution
 
-**No ambiente docker**
-~~~sh
+We provide a quick demo on a small, balanced dataset ([Demo Dataset](https://github.com/SBSegSF24/SigAPI-AutoCraft/blob/main/datasets/demo.csv)). On an AMD Ryzen 7 5800X (8 cores, 64 GB RAM), the demo completes in under 1 minute.
+
+- **Using Docker**
+```bash
+
 ./demo_docker.sh
-~~~
-**No ambiente local**
-~~~sh
+
+```
+
+- **Locally (virtual environment)**
+```bash
+
 ./demo_venv.sh
-~~~
 
-**Executando a ferramenta** (use **python 3.10.12** ou posterior)
-
-## :dart: Reproduzindo os experimentos do trabalho
-
-A execução das duas reproduções (SigAPI Original e SigAPI AutoCraft) pode levar até mais de 24 horas dependendo do hardware. 
-
-### Execução do SigAPI Original para todos os datasets no ambiente local
- 
-```
-./reproduzir_sigapi.sh
 ```
 
-### Execução do SigAPI AutoCraft para todos os datasets no ambiente local
-```
-./reproduzir_sigapi_autocraft.sh
-```
-### Executando em um container em modo **persistente** ou **não persistente**
+## :pushpin: Available arguments:
 
-**Não persistente**: Os arquivos de saida serão apagados quando o conteiner finalizar a execução.
+```
+usage: main.py [-h] -d DATASET [-c CLASS_COLUMN] [--parallelize] [--output OUTPUT] [-th THRESHOLD] [-ifp INITIAL_FEATURES_PERCENT] [-pi PERCENT_INCREMENT] [--autocraft] [-m METRIC]
 
+Optional Arguments:
+  -h, --help            show this help message and exit
+  -d DATASET, --dataset DATASET
+                        Dataset (csv Files)
+  -c CLASS_COLUMN, --class-column CLASS_COLUMN
+                        Name of Class Column. Default: class
+  --parallelize         Parallel Execution
+  --output OUTPUT       Output File Directory. Default: results
+  -th THRESHOLD, --threshold THRESHOLD
+                        Threshold of Difference Between Metrics at Each Increment in Number of Features. When All Metrics Are Less Than It, Selection Phase Finishes. Default: 0.03
+  -ifp INITIAL_FEATURES_PERCENT, --initial-features-percent INITIAL_FEATURES_PERCENT
+                        Initial Features Percentage. Default: 0.05
+  -pi PERCENT_INCREMENT, --percent-increment PERCENT_INCREMENT
+                        Percentage to Increment Number of Features. Default: 0.05
+  --autocraft           Run SigAPI Autocraft
+  -m METRIC, --metric METRIC
+                        Metric to Compare. Default: median. Choices: ['median', 'area', 'distance']
+```
+
+
+## :shell: Manual Usage for a Single Dataset
+
+- Run SigAPI **AutoCraft**
 ```bash
 
-docker run -it sigapiautocraft
+cd src
+
+python3 main.py --autocraft -d ../datasets/androcrawl.csv -o results -pi 0.1
 
 ```
-**Persistente**: Os arquivos de saída da execução serão salvos no diretório atual
 
+- Run SigAPI **Original**
 ```bash
 
-docker run -v $(readlink -f .):/sigapi -it sigapiautocraft
+cd src
+
+python3 main.py -d ../datasets/androcrawl.csv -o results -pi 0.1
 
 ```
 
+- Run Random Forest Classifier
+```bash
 
-## :shell: Execução manual do SigAPI AutoCraft para um dataset
+python3 run_ml.py --classifier rf -d results/autocraft_androcrawl.csv
 
-### Exemplo:
-Parâmetros:
-`-d` indica dataset
-`-o` indica output
-`-i` indica incremento
-```
-python3 -m SigAPI_Otimizado.metodos.SigAPI.main -d Datasets/Balanceados/androcrawl_all_bl.csv -o resultado-selecao-BALANCEADOS-androcrawl_all_bl.csv -i 1
 ```
 
-Para os demais datasets, substitua o valor do parâmetro `-d` conforme a lista abaixo:
-- `Datasets/Balanceados/adroit_bl.csv`
-- `Datasets/Balanceados/drebin_215_all_bl.csv`
-- `Datasets/Balanceados/android_permissions_bl.csv`
-- `Datasets/Balanceados/kronodroid_real_device_bl.csv`
-- `Datasets/Balanceados/reduced_balanced_defensedroid_apicalls_closeness.csv`
-- `Datasets/Balanceados/reduced_balanced_defensedroid_apicalls_degree.csv`
-- `Datasets/Balanceados/reduced_balanced_defensedroid_apicalls_katz.csv`
-- `Datasets/Balanceados/reduced_20k_mh_100k_filtered.csv`
-- `Datasets/Balanceados/reduced_balanced_defensedroid_prs.csv`
+## :test_tube: Test Environment
 
-## :shell: Execução manual do Random Forest para um dataset reduzido
+All experiments were validated on:
 
-### Exemplo:
-```
-python3 run_ml_RandomForest.py -d Resultados/Paper_SBSeg_Trilha_Principal/Original/Datasets/ORIGINAL-resultado-selecao-balanceados-adroit.csv -c rf
-```
-
-Para os demais datasets selecionados pelo método **original**, substitua o valor do parâmetro `-d` conforme a lista abaixo:
-- `Resultados/Paper_SBSeg_Trilha_Principal/Original/Datasets/ORIGINAL-resultado-selecao-balanceados-drebin_215_all.csv`
-- `Resultados/Paper_SBSeg_Trilha_Principal/Original/Datasets/ORIGINAL-resultado-selecao-balanceados-adroit.csv`
-- `Resultados/Paper_SBSeg_Trilha_Principal/Original/Datasetss/ORIGINAL-resultado-selecao-balanceados-android_permissions.csv`
-- `Resultados/Paper_SBSeg_Trilha_Principal/Original/Datasets/ORIGINAL-resultado-selecao-balanceados-kronodroid_real_device.csv`
-- `Resultados/Paper_SBSeg_Trilha_Principal/Original/Datasets/ORIGINAL-resultado-selecao-balanceados-katz.csv`
-- `Resultados/Paper_SBSeg_Trilha_Principal/Original/Datasets/ORIGINAL-resultado-selecao-balanceados-degree.csv`
-- `Resultados/Paper_SBSeg_Trilha_Principal/Original/Datasets/ORIGINAL-resultado-selecao-balanceados-closeness.csv`
-- `Resultados/Paper_SBSeg_Trilha_Principal/Original/Datasets/ORIGINAL-resultado-selecao-balanceados-MH100K.csv`
-- `Resultados/Paper_SBSeg_Trilha_Principal/Original/Datasets/ORIGINAL-resultado-selecao-balanceados-defensedroid_prs.csv`
-
-Para os demais datasets selecionados pelo método **otimizado**, substitua o valor do parâmetro `-d` conforme a lista abaixo:
-
-- `Resultados/Paper_SBSeg_Trilha_Principal/Otimizado/Datasets/resultado-selecao-BALANCEADOS-adroit_bl.csv`
-- `Resultados/Paper_SBSeg_Trilha_Principal/Otimizado/Datasets/resultado-selecao-BALANCEADOS-drebin_215_all_bl.csv`
-- `Resultados/Paper_SBSeg_Trilha_Principal/Otimizado/Datasets/resultado-selecao-BALANCEADOS-android_permissions_bl.csv`
-- `Resultados/Paper_SBSeg_Trilha_Principal/Otimizado/Datasets/resultado-selecao-BALANCEADOS-kronodroid_real_device_bl.csv`
-- `Resultados/Paper_SBSeg_Trilha_Principal/Otimizado/Datasets/resultado-selecao-BALANCEADOS-katz_bl.csv`
-- `Resultados/Paper_SBSeg_Trilha_Principal/Otimizado/Datasets/resultado-selecao-BALANCEADOS-degree_bl.csv`
-- `Resultados/Paper_SBSeg_Trilha_Principal/Otimizado/Datasets/Datasets/resultado-selecao-BALANCEADOS-closeness_bl.csv`
-- `Resultados/Paper_SBSeg_Trilha_Principal/Otimizado/Datasets/Datasets/resultado-selecao-BALANCEADOS-MH100K_bl.csv`
-- `Resultados/Paper_SBSeg_Trilha_Principal/Otimizado/Datasets/Datasets/resultado-selecao-BALANCEADOS-defensedroid_prs_bl.csv`
-
-***OBS: Recomenda-se armazenar os resultados gerados pelo método em uma pasta separada após cada execução.***
-
-
-## :dash: Ambiente de testes
-
-O método foi testado no seguinte ambiente:
 - **Hardware**: Intel Core i5-8265U, 8 core, 8 GB RAM. **Software**: Ubuntu 22.04.4 LTS, Kernel 6.5.0-35-generic, Python 3.10.12, Docker 24.0.5.  
 - **Hardware**: Intel Core i7-10700, 8 cores, 16 GB RAM. **Software**: Ubuntu 24.02 LTS, Kernel 6.8.0-38-generic, Python 3.12.3, Docker 26.1.4.
 - **Hardware**: AMD Ryzen 7 5800X 8-core, 64GB RAM. **Software**: Ubuntu Server 22.04.2 LTS, Kernel 6.2.0-33-generic, Python 3.10.12, Docker 24.07.
 
-O repositório está organizado da seguinte maneira:
+## :file_folder: Repository Structure
 
 ```
 /Algoritmos_de_Teste
@@ -196,7 +158,7 @@ O repositório está organizado da seguinte maneira:
 - README.md
 ```
 
-## Descrição dos Diretórios:
+**Directory Descriptions:**
 
 - **Algoritmos_de_Teste**: Scripts relacionados aos algoritmos e testes.
 
@@ -215,7 +177,8 @@ O repositório está organizado da seguinte maneira:
 
 - **SigAPI_Otimizado**: Contém arquivos e scripts relacionados à versão otimizada do SigAPI.
 
-## Datasets:
+## :bar_chart: Datasets
+
 |             Dataset             | Nº Amostras  | Nº Amostras balanceado | Nº Features  | Nº Features balanceado |
 |:-------------------------------:|:------------:|:----------------------:|:------------:|:----------------------:|
 |            Androcrawl           |    162983    |          20340         |      221     |           82           |
@@ -230,6 +193,6 @@ O repositório está organizado da seguinte maneira:
 |         Defensedroid prs        |     11975    |          11950         |     2938     |           201          |
 
 
-## Outras informações
+## :link: References
 
-#### [Link para o artigo do método SigAPI Original](https://galib19.github.io/publications/SigapiSEKE2020)
+#### [Original SigAPI Paper](https://galib19.github.io/publications/SigapiSEKE2020)
