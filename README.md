@@ -74,7 +74,7 @@ We provide a quick demo on a small, balanced dataset ([Demo Dataset](https://git
 - **Locally (virtual environment)**
 ```bash
 
-./demo_venv.sh
+./demo_local.sh
 
 ```
 
@@ -102,7 +102,6 @@ Optional Arguments:
                         Metric to Compare. Default: median. Choices: ['median', 'area', 'distance']
 ```
 
-
 ## :shell: Manual Usage for a Single Dataset
 
 - Run SigAPI **AutoCraft**
@@ -110,7 +109,7 @@ Optional Arguments:
 
 cd src
 
-python3 main.py --autocraft -d ../datasets/androcrawl.csv -o results -pi 0.1
+python3 main.py --autocraft -d ../datasets/rus/androcrawl_rus.csv
 
 ```
 
@@ -119,14 +118,7 @@ python3 main.py --autocraft -d ../datasets/androcrawl.csv -o results -pi 0.1
 
 cd src
 
-python3 main.py -d ../datasets/androcrawl.csv -o results -pi 0.1
-
-```
-
-- Run Random Forest Classifier
-```bash
-
-python3 run_ml.py --classifier rf -d results/autocraft_androcrawl.csv
+python3 main.py -d ../datasets/smote/drebin_215_smote.csv
 
 ```
 
@@ -138,60 +130,22 @@ All experiments were validated on:
 - **Hardware**: Intel Core i7-10700, 8 cores, 16 GB RAM. **Software**: Ubuntu 24.02 LTS, Kernel 6.8.0-38-generic, Python 3.12.3, Docker 26.1.4.
 - **Hardware**: AMD Ryzen 7 5800X 8-core, 64GB RAM. **Software**: Ubuntu Server 22.04.2 LTS, Kernel 6.2.0-33-generic, Python 3.10.12, Docker 24.07.
 
-## :file_folder: Repository Structure
-
-```
-/Algoritmos_de_Teste
-/Datasets
-/Documentos
-/Modelos_gerados
-/Resultados
-    /Datasets_Balanceados_Reduzidos - Desconsiderar
-    /Metricas_50_Features
-    /Metricas_100_Features
-    /Original
-    /Otimizado
-    /PCA_vs_InfoGain
-/SigAPI_Original
-/SigAPI_Otimizado
-
-- README.md
-```
-
-**Directory Descriptions:**
-
-- **Algoritmos_de_Teste**: Scripts relacionados aos algoritmos e testes.
-
-- **Datasets**: Contém todos os datasets utilizados.
-
-- **Modelos_gerados**: Contém os modelos treinados salvos.
-
-- **Resultados**: Armazena resultados dos testes e execuções.
-  - **Metricas_50_Features**: Diretório para armazenar métricas relacionadas a 50 features.
-  - **Metricas_100_Features**: Diretório para armazenar métricas relacionadas a 100 features.
-  - **Original**: Contém resultados da versão original.
-  - **Otimizado**: Contém resultados da versão otimizada.
-  - **PCA_vs_InfoGain**: Diretório para análises comparativas entre PCA e InfoGain.
-
-- **SigAPI_Original**: Contém arquivos e scripts relacionados à versão original do SigAPI.
-
-- **SigAPI_Otimizado**: Contém arquivos e scripts relacionados à versão otimizada do SigAPI.
-
 ## :bar_chart: Datasets
 
-|             Dataset             | Nº Amostras  | Nº Amostras balanceado | Nº Features  | Nº Features balanceado |
-|:-------------------------------:|:------------:|:----------------------:|:------------:|:----------------------:|
-|            Androcrawl           |    162983    |          20340         |      221     |           82           |
-|              Adroit             |     11476    |          6836          |      182     |           167          |
-|            Drebin-215           |     15031    |          11110         |      215     |           209          |
-|       Android Permissions       |     29999    |          18154         |      183     |           152          |
-|      Kronodroid Real Device     |     78137    |          73510         |      483     |           287          |
-|              MH100K             |    101,975   |          20000         |     24833    |           201          |
-| Defensedroid Apicalls Closeness |     10476    |          10444         |     21997    |           201          |
-|   Defensedroid Apicalls Degree  |     10476    |          10444         |     21997    |           201          |
-|    Defensedroid Apicalls Katz   |     10476    |          10444         |     21997    |           201          |
-|         Defensedroid prs        |     11975    |          11950         |     2938     |           201          |
+P = Permissions, A = API Calls, I = Intents
 
+| Dataset                | Features     | Baseline Benign | Baseline Malicious | SMOTE Per Class | RUS Per Class | Unique Benign | Unique Malicious |
+|-------------------------------|--------------|-----------------|--------------------|-----------------|---------------|---------------|------------------|
+| Adroit                 | 166 (P)      | 8,058           | 3,418              | 5,640           | 3,418         | 992           | 133              |
+| AndroCrawl             | 81 (P, A)    | 86,562          | 10,170             | 60,593          | 10,170        | 13,850        | 3 249            |
+| Android Permission     | 151 (P)      | 9,077           | 17,787             | 12,450          | 9,077         | 1,443         | 976              |
+| DefenseDroid Closeness | 500 (A)      | 5,222           | 5,224              | 3,678           | 5,222         | 3,130         | 2,899            |
+| DefenseDroid Degree    | 500 (A)      | 5,222           | 5,224              | 3,678           | 5,222         | 3,125         | 2,894            |
+| DefenseDroid Katz      | 500 (A)      | 5,222           | 5,224              | 3,678           | 5,222         | 3,297         | 3,042            |
+| DefenseDroid PRS        | 500 (P, I)   | 11,975          | 5,975              | 4,200           | 5,222         | 4,403         | 2,364            |
+| Drebin-215              | 215 (P, A)   | 9,476           | 5,555              | 6,633           | 5,555         | 3,826         | 1,099            |
+| KronoDroid Device       | 286 (P, A)   | 36,755          | 41,382             | 28,976          | 36,755        | 16,908        | 14,555           |
+| MH-100K                 | 500 (P, I, A)| 89,213          | 12,721             | 62,493          | 12,721        | 23,468        | 7,437            |
 
 ## :link: References
 

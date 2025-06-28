@@ -19,7 +19,7 @@ WORKDIR /sigapi
 COPY . ./
 
 RUN python3 -m pip install --upgrade pip
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r src/requirements.txt
 
-RUN chmod +x reproduzir_sigapi_autocraft.sh
-CMD ["./reproduzir_sigapi_autocraft.sh"]
+RUN chmod +x demo_local.sh
+CMD ["./demo_local.sh"]
